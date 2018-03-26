@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Chaff\'r</string>
+    <string name="rider_text">Rider</string>
+    <string name="driver_text">Driver</string>
+    <string name="driver_icon_content_description">driver icon</string>
+    <string name="get_started_text">Get Started</string>
+</resources>
