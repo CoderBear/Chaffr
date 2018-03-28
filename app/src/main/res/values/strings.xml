@@ -4,4 +4,6 @@
     <string name="driver_text">Driver</string>
     <string name="driver_icon_content_description">driver icon</string>
     <string name="get_started_text">Get Started</string>
+    <string name="title_activity_rider">Map</string>
+    <string name="call_chaffr_button_text">Call Chaff\'r</string>
 </resources>

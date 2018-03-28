@@ -1,5 +1,6 @@
 package com.udemy.sbsapps.chaffr;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import com.parse.LogInCallback;
 import com.parse.ParseAnonymousUtils;
 import com.parse.ParseException;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         } else {
             if(ParseUser.getCurrentUser().get("riderOrDriver") != null){
                 // Start activity based on userType
+                redirectActivity();
             }
         }
     }
@@ -52,5 +55,25 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ParseUser.getCurrentUser().put("riderOrDriver", userType);
+
+        ParseUser.getCurrentUser().saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                redirectActivity();
+            }
+        });
+
+    }
+
+    public void redirectActivity() {
+        Intent intent;
+        if(ParseUser.getCurrentUser().get("riderOrDriver").equals("rider")) {
+            intent = new Intent(this, RiderActivity.class);
+            startActivity(intent);
+        } else if(ParseUser.getCurrentUser().get("riderOrDriver").equals("rider")){
+            // Start Driver activity
+//                    intent = new Intent(this, RiderActivity.class);
+//                    startActivity(intent);
+        }
     }
 }
