@@ -136,15 +136,18 @@ public class RiderActivity extends FragmentActivity implements OnMapReadyCallbac
     public void updateMap(Location location) {
         LatLng userLocation = new LatLng(location.getLatitude(), location.getLongitude());
 
-        Log.i("Location", Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()) );
+        Log.i(" updateMap()", Double.toString(location.getLatitude()) + "," + Double.toString(location.getLongitude()) );
 
-        mMap.clear();
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 9));
-        mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
+        if(mMap != null) {
+            mMap.clear();
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 9));
+            mMap.addMarker(new MarkerOptions().position(userLocation).title("Your Location"));
 
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+//            LatLng sydney = new LatLng(-34, 151);
+//            mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        }
+
     }
 
     public void callChaffr(View view) {
